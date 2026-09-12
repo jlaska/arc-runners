@@ -1,0 +1,17 @@
+---
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: /homelab-core
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: docker
+    directory: /homelab-pr-impact
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
