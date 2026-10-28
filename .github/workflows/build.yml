@@ -72,9 +72,9 @@ jobs:
       matrix:
         include:
           - image: homelab-core
-            test: "python3 -m pip --version && pip install --user yamllint pre-commit detect-secrets && yamllint --version && pre-commit --version"
+            test: "python3 -m pip --version && pip install --user yamllint pre-commit detect-secrets && yamllint --version && pre-commit --version && ldconfig -p | grep -q libatomic.so.1"
           - image: homelab-pr-impact
-            test: "gh --version && helm version --short && crane version && uv --version && kubectl version --client && claude --version"
+            test: "gh --version && helm version --short && crane version && uv --version && kubectl version --client && claude --version && ldconfig -p | grep -q libatomic.so.1"
     steps:
       - name: Smoke test
         run: |
