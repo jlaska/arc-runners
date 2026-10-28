@@ -15,8 +15,8 @@ test: test-homelab-core test-homelab-pr-impact
 
 test-homelab-core: build-homelab-core
 	docker run --rm $(REGISTRY)/homelab-core:$(TAG) bash -c \
-	  'python3 -m pip --version && pip install --user yamllint pre-commit detect-secrets && yamllint --version && pre-commit --version'
+	  'python3 -m pip --version && pip install --user yamllint pre-commit detect-secrets && yamllint --version && pre-commit --version && ldconfig -p | grep -q libatomic.so.1'
 
 test-homelab-pr-impact: build-homelab-pr-impact
 	docker run --rm $(REGISTRY)/homelab-pr-impact:$(TAG) bash -c \
-	  'gh --version && helm version --short && crane version && uv --version && kubectl version --client && claude --version'
+	  'gh --version && helm version --short && crane version && uv --version && kubectl version --client && claude --version && ldconfig -p | grep -q libatomic.so.1'
